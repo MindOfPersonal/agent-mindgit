@@ -1,0 +1,31 @@
+{
+  "name": "@mindgit/agent",
+  "version": "2.0.8",
+  "generatedAt": "2026-09-20T23:41:48.580Z",
+  "files": {
+    "index.js": "0c38fc49a5dd6079461beafb07fae2636ac80c3934a9c9f7f56b8561479ebd29",
+    "lib/agent-protocol.js": "af6f733e6dc5ecaeeb6b1396c9811f3ae4eada6628af7cc7ae26ee226416d4bc",
+    "package-lock.json": "ee143e91a2964f6b09aef6348765c83d0edf7e21d455eaea656659a9f6b44294",
+    "package.json": "b54df04aee9fe50bd816ce4a3ce118e029589a94959bc2d7fe9b3218b943a0cc",
+    "src/agent.js": "1476c1936ea7081a4c5398922a15f7d0c2c33b05ce8d1d6c78916cd66687a568",
+    "src/cli.js": "8e79d313156d826f615a4cf0bbfd8d0cd767b3564eea8cb3b742fb989ff2196e",
+    "src/config.js": "85aee46a0d9d0f7f23f1745ed612b7329d658ebbc0806bfcba3c409a2f74cc8e",
+    "src/git/repo.js": "d08a185f19ad1ca8df5dd4ff03151f8e59982f560d5fdfa74750a706c805bdec",
+    "src/git/runner.js": "2eec28cda425aba5f5492dc269fc395d0ac091b0a6f2108bcd7d0fa2d63eaa9b",
+    "src/logger.js": "916975376c9bac71bd5cab53176a8ecbd9030a2a96661de62313ac77d91cf84d",
+    "src/redact.js": "5d45e8227a81556b7713da5a856d0ccb134bbee9905662ebaaa2a4a30c475f9d",
+    "src/tasks/branches.js": "9673587338fb091ca1b6089463caa707608ee0ae011d52f74e17df9bb7a4465a",
+    "src/tasks/browse.js": "2f83826ce89ac0d7349e376288b5f255e3fbcbb955cda1a0c5e5ceabba7243aa",
+    "src/tasks/commit.js": "b1427436941421062600f4b28d95df841dcd77d1dfe6707f7dba01bda59663a1",
+    "src/tasks/create.js": "262c16d3c4628c00c6128166f6aaaf2d503e3c023bea96dc904ab9750066cfea",
+    "src/tasks/diff.js": "cf09d1ad688686ab6befc66c5577296482192b1cfd5e7a96a46dd14b035e9029",
+    "src/tasks/index.js": "d244805a575293fe79e9ed0d31e0688db18bff1cde2a045291b0a8b24de8b0fa",
+    "src/tasks/repo-data.js": "892bc2b979f7f3f6f9832951095b79c2e45825c415765a84ebffdeb1a5bc0387",
+    "src/tasks/resolve-conflict.js": "aa1082d7c73f71f5bea5e384ebcc2ace7808938288d44e64b880d787fb7b97ac",
+    "src/tasks/status.js": "d1067f35456341d8fe71eee393e303f9870a0bf5fa3ec95d01670e3797ce3f52",
+    "src/tasks/switch-branch.js": "05e49da57993df3c5d0e665abf15e52a528e12b2730668d8afa8287b6ff4e12c",
+    "src/tasks/sync.js": "367f6f8b8e21d35f72e3b6160eaeb7d2bf9a23bea6bf854f2ace1685acb8d226",
+    "src/update/updater.js": "ae7e243e24f2c79742bd2dbc1efd74e5bef2d3c97372bb69f2d227e16354a919",
+    "src/version.js": "4e91495acba325304ae48628c4377081d6cba358a960f5483fa7f97c6f1b2ad3"
+  }
+}

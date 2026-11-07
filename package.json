@@ -1,0 +1,42 @@
+{
+  "name": "@mindgit/agent",
+  "version": "2.0.8",
+  "description": "MindGit Distributed Repository Sync Agent (v2) — robust, observable and self-updating",
+  "main": "index.js",
+  "bin": {
+    "mindgit-agent": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "node --test",
+    "doctor": "node index.js doctor",
+    "manifest": "node scripts/generate-manifest.js",
+    "install:linux": "bash scripts/install-linux.sh",
+    "install:macos": "bash scripts/install-macos.sh",
+    "install:windows": "scripts\\install-windows.bat"
+  },
+  "keywords": [
+    "mindgit",
+    "git",
+    "sync",
+    "agent",
+    "distributed"
+  ],
+  "author": "MindDevelopment",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "dotenv": "^16.4.7",
+    "pino": "^9.5.0",
+    "ws": "^8.21.3",
+    "zod": "^3.24.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "os": [
+    "win32",
+    "linux",
+    "darwin"
+  ]
+}

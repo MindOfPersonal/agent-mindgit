@@ -1,0 +1,76 @@
+MindGit Agent — installatie op een andere server
+=================================================
+
+Dit pakket is compleet: de agent-broncode EN alle dependencies (node_modules)
+zitten erbij. Je hebt alleen Node.js 18+ en Git nodig. Er is geen internet of
+`npm install` nodig om te starten.
+
+LET OP: het bestand `.env` zit bewust NIET in dit pakket. Daarin staat de
+node-key, en die is per server verschillend. Je maakt hem hieronder zelf aan.
+
+
+Stap 1 — Maak een node aan in MindGit
+-------------------------------------
+Dashboard: Nodes -> Node toevoegen -> naam + platform -> key kopieren.
+
+Of via de CLI (vanaf de machine met toegang tot de coordinator):
+
+    ./scripts/new-node.sh --server https://git.minddev.nl --user admin --name "mijn-server"
+
+Je krijgt een NODE_KEY van 64 tekens. Bewaar hem goed.
+
+
+Stap 2 — Uitpakken en configureren
+----------------------------------
+    unzip mindgit-agent-2.0.8.zip
+    cd mindgit-agent
+    cp .env.example .env
+    # bewerk .env: zet COORDINATOR_URL en NODE_KEY
+
+Voorbeeld:
+
+    COORDINATOR_URL=https://git.minddev.nl
+    NODE_KEY=jouw-64-tekens-key
+
+Optioneel: BROWSE_ROOTS=/home/user/projecten,/srv/repos
+
+
+Stap 3 — Controleren en starten
+-------------------------------
+    node index.js doctor     # moet allemaal [ OK ] geven
+    node index.js            # agent starten
+
+Blijvend draaien? Kies een supervisor:
+
+  PM2:
+    pm2 start ecosystem.config.js
+    pm2 save
+
+  systemd (voorbeeld staat in deploy/mindgit-agent.service):
+    sudo cp deploy/mindgit-agent.service /etc/systemd/system/
+    sudo systemctl daemon-reload
+    sudo systemctl enable --now mindgit-agent
+
+  Of gebruik het installatiescript (zet alles automatisch op):
+    sudo bash scripts/install-linux.sh --coordinator=https://git.minddev.nl --node-key=JOUW_KEY
+
+
+Controleren
+-----------
+In het dashboard staat de node onder Nodes op Online. Wijs daarna repositories
+toe via Nodes -> jouw node -> Repository toewijzen.
+
+
+Beheer
+------
+    node index.js doctor
+    node index.js config
+    node index.js --version
+    pm2 logs MindGitAgent
+
+
+Beveiliging
+-----------
+- De node-key is geheim. Bewaar .env veilig (chmod 600) en commit hem nooit.
+- De agent maakt alleen UITGAANDE verbindingen; je hoeft geen poort te openen.
+- De mapbrowser is beperkt tot BROWSE_ROOTS.

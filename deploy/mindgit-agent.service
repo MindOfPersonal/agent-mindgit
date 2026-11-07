@@ -1,0 +1,26 @@
+[Unit]
+Description=MindGit Distributed Repository Sync Agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=mindgit-agent
+Group=mindgit-agent
+WorkingDirectory=/opt/mindgit-agent
+EnvironmentFile=/opt/mindgit-agent/.env
+ExecStart=/usr/bin/node /opt/mindgit-agent/index.js
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=mindgit-agent
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/mindgit-agent
+
+[Install]
+WantedBy=multi-user.target
