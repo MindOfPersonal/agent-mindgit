@@ -1,15 +1,15 @@
 {
   "name": "@mindgit/agent",
-  "version": "2.0.8",
-  "generatedAt": "2026-09-20T23:41:48.580Z",
+  "version": "2.0.9",
+  "generatedAt": "2026-11-08T00:38:31.086Z",
   "files": {
     "index.js": "0c38fc49a5dd6079461beafb07fae2636ac80c3934a9c9f7f56b8561479ebd29",
     "lib/agent-protocol.js": "af6f733e6dc5ecaeeb6b1396c9811f3ae4eada6628af7cc7ae26ee226416d4bc",
-    "package-lock.json": "ee143e91a2964f6b09aef6348765c83d0edf7e21d455eaea656659a9f6b44294",
-    "package.json": "b54df04aee9fe50bd816ce4a3ce118e029589a94959bc2d7fe9b3218b943a0cc",
+    "package-lock.json": "4db3f31e814015e9b884b484f44ba0899127a0cdb275a21b24ba90caf9340fc9",
+    "package.json": "bb7e085c50a7def3fe04244326f6dfe152f0093944582ee9e6bb1980fb15caca",
     "src/agent.js": "1476c1936ea7081a4c5398922a15f7d0c2c33b05ce8d1d6c78916cd66687a568",
-    "src/cli.js": "8e79d313156d826f615a4cf0bbfd8d0cd767b3564eea8cb3b742fb989ff2196e",
-    "src/config.js": "85aee46a0d9d0f7f23f1745ed612b7329d658ebbc0806bfcba3c409a2f74cc8e",
+    "src/cli.js": "6e280a824722a3ac6d872e514781cff790d1b4e010cef632e86eaa510269c623",
+    "src/config.js": "2f1dbbed55e3f54638507c6acc13dbc8ed4da3b8210782a51f614dddeb226e0d",
     "src/git/repo.js": "d08a185f19ad1ca8df5dd4ff03151f8e59982f560d5fdfa74750a706c805bdec",
     "src/git/runner.js": "2eec28cda425aba5f5492dc269fc395d0ac091b0a6f2108bcd7d0fa2d63eaa9b",
     "src/logger.js": "916975376c9bac71bd5cab53176a8ecbd9030a2a96661de62313ac77d91cf84d",
@@ -25,7 +25,7 @@
     "src/tasks/status.js": "d1067f35456341d8fe71eee393e303f9870a0bf5fa3ec95d01670e3797ce3f52",
     "src/tasks/switch-branch.js": "05e49da57993df3c5d0e665abf15e52a528e12b2730668d8afa8287b6ff4e12c",
     "src/tasks/sync.js": "367f6f8b8e21d35f72e3b6160eaeb7d2bf9a23bea6bf854f2ace1685acb8d226",
-    "src/update/updater.js": "ae7e243e24f2c79742bd2dbc1efd74e5bef2d3c97372bb69f2d227e16354a919",
+    "src/update/updater.js": "446509b72e055f145efeacdfe261a6a8aef5b6f3de46a81958b64f284d74accb",
     "src/version.js": "4e91495acba325304ae48628c4377081d6cba358a960f5483fa7f97c6f1b2ad3"
   }
 }

@@ -74,3 +74,5 @@ Beveiliging
 - De node-key is geheim. Bewaar .env veilig (chmod 600) en commit hem nooit.
 - De agent maakt alleen UITGAANDE verbindingen; je hoeft geen poort te openen.
 - De mapbrowser is beperkt tot BROWSE_ROOTS.
+- Self-update staat standaard uit (UPDATE_ENABLED=false). Zet dit alleen aan als
+  je zelf de update-repo beheert; de agent voert die code namelijk uit.

@@ -208,7 +208,13 @@ async function applyUpdate(config, logger, remoteVersion, branch, options = {}) 
  * @returns {Promise<{checked:boolean, updated:boolean, local:string, remote?:string, branch?:string}>}
  */
 async function checkForUpdates(config, logger, options = {}) {
-  if (!config.updateEnabled) return { checked: false, updated: false, local: getLocalVersion() };
+  // Met dryRun wordt alleen de remote versie opgehaald (versiecheck), zonder
+  // de agent daadwerkelijk bij te werken. Zo kan `doctor` de update-bron
+  // controleren ook als UPDATE_ENABLED=false staat.
+  const dryRun = options.dryRun === true;
+  if (!config.updateEnabled && !dryRun) {
+    return { checked: false, updated: false, local: getLocalVersion() };
+  }
 
   const fetchFn = options.fetch || fetchRaw;
   const local = getLocalVersion();
@@ -236,6 +242,10 @@ async function checkForUpdates(config, logger, options = {}) {
 
   if (!remoteVersion || compareVersions(remoteVersion, local) <= 0) {
     return { checked: true, updated: false, local, remote: remoteVersion, branch };
+  }
+
+  if (dryRun) {
+    return { checked: true, updated: false, local, remote: remoteVersion, branch, available: true };
   }
 
   logger.info({ local, remote: remoteVersion, branch }, 'Nieuwe versie beschikbaar');

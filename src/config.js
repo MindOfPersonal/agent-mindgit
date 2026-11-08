@@ -89,16 +89,20 @@ const schema = z.object({
     .transform((v) => String(v).split(',').map((s) => s.trim()).filter(Boolean)),
 
   updateEnabled: bool(true),
-  updateRepo: z.string().trim().default('MindOfPersonal/Mindgit-agent'),
+  updateRepo: z.string().trim().default('MindOfPersonal/agent-mindgit'),
   updateBranch: z.string().trim().default('master'),
   updatePath: z.string().trim().optional().default(''),
   updateInterval: int(3600000, { min: 60000 }),
   updateVerify: bool(true),
 });
 
+// De coordinator draait standaard op https://git.minddev.nl. Een expliciete
+// COORDINATOR_URL in de omgeving of .env heeft altijd voorrang.
+const DEFAULT_COORDINATOR_URL = 'https://git.minddev.nl';
+
 function normalizeRawEnv(env) {
   return {
-    coordinatorUrl: env.COORDINATOR_URL,
+    coordinatorUrl: String(env.COORDINATOR_URL || '').trim() || DEFAULT_COORDINATOR_URL,
     nodeKey: env.NODE_KEY,
     gitTimeout: env.GIT_TIMEOUT,
     gitLongTimeout: env.GIT_LONG_TIMEOUT,

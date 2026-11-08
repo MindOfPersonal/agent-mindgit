@@ -18,10 +18,15 @@ test('loadConfig vult verstandige defaults', () => {
   assert.equal(config.gitLongTimeout, 30000);
   assert.equal(config.heartbeatInterval, 30000);
   assert.equal(config.taskTimeout, 300000);
-  assert.equal(config.updateRepo, 'MindOfPersonal/Mindgit-agent');
+  assert.equal(config.updateRepo, 'MindOfPersonal/agent-mindgit');
   assert.equal(config.updateBranch, 'master');
   assert.equal(config.updateEnabled, true);
   assert.deepEqual(config.browseRoots, []);
+});
+
+test('coordinator-URL valt terug op https://git.minddev.nl', () => {
+  const config = loadConfig({ NODE_KEY: 'abc123' }, { loadEnvFile: false });
+  assert.equal(config.coordinatorUrl, 'https://git.minddev.nl');
 });
 
 test('loadConfig parseert strings, getallen, booleans en lijsten', () => {

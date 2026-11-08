@@ -17,10 +17,11 @@ Deze kopie is al geconfigureerd en draait:
 | | |
 | --- | --- |
 | Coordinator | `https://git.minddev.nl` |
-| Node in dashboard | **vps** (id 1, platform `linux`) |
+| Node in dashboard | **vps** (platform `linux`) |
 | Service | PM2-proces **MindGitAgent** |
 | Configuratie | `.env` (bevat de node-key, staat in `.gitignore`) |
-| Auto-update | uit (deze kopie wordt lokaal beheerd) |
+| Update-bron | `MindOfPersonal/agent-mindgit@master` |
+| Auto-update | uit (versiecheck via `doctor`; zet `UPDATE_ENABLED=true` om bij te werken) |
 
 Controleren of hij online is:
 
@@ -120,7 +121,7 @@ De belangrijkste variabelen:
 
 | Variabele | Betekenis |
 | --- | --- |
-| `COORDINATOR_URL` | Adres van de MindGit-server zoals *deze* machine hem bereikt |
+| `COORDINATOR_URL` | Adres van de MindGit-server zoals *deze* machine hem bereikt (standaard `https://git.minddev.nl`) |
 | `NODE_KEY` | Node-key uit het dashboard (geheim) |
 | `BROWSE_ROOTS` | Komma-gescheiden mappen die de mapbrowser mag tonen |
 | `LOG_LEVEL` | `debug`, `info`, `warn` of `error` |
@@ -129,6 +130,7 @@ De belangrijkste variabelen:
 | `HEARTBEAT_INTERVAL` | Heartbeat-interval in ms (standaard 30 s) |
 | `RECONNECT_MAX_ATTEMPTS` | `0` = oneindig blijven herverbinden |
 | `UPDATE_ENABLED` | Self-update aan/uit (standaard hier: uit) |
+| `UPDATE_REPO` | GitHub-repo voor de versiecheck/self-update (standaard `MindOfPersonal/agent-mindgit`) |
 
 Zie `.env.example` voor de volledige lijst. Expliciete omgevingsvariabelen gaan
 vóór op `.env`.
@@ -140,7 +142,7 @@ vóór op `.env`.
 ```bash
 node index.js doctor      # diagnose: Node, Git, npm, .env, rechten, coordinator
 node index.js config      # toon configuratie (geheimen geredigeerd)
-node index.js update      # forceer een self-update-check
+node index.js update      # self-update-check (alleen bij UPDATE_ENABLED=true)
 node index.js --version   # versie
 ```
 

@@ -83,8 +83,8 @@ if [[ -t 0 ]]; then
         if [[ -n "$INPUT_DIR" ]]; then INSTALL_DIR="$INPUT_DIR"; fi
     fi
     if [[ -z "$COORDINATOR_URL" ]]; then
-        read -rp "Coordinator URL [default: http://localhost:3000]: " COORDINATOR_URL
-        COORDINATOR_URL="${COORDINATOR_URL:-http://localhost:3000}"
+        read -rp "Coordinator URL [default: https://git.minddev.nl]: " COORDINATOR_URL
+        COORDINATOR_URL="${COORDINATOR_URL:-https://git.minddev.nl}"
     fi
     if [[ -z "$NODE_KEY" ]]; then
         read -rp "Node key (from dashboard, Nodes > Add Node): " NODE_KEY
@@ -138,7 +138,7 @@ if [[ ! -f "$INSTALL_DIR/.env" ]]; then
 # MindGit Agent v2 configuration
 # Values from the MindGit dashboard (Nodes > Add Node).
 
-COORDINATOR_URL=${COORDINATOR_URL:-http://localhost:3000}
+COORDINATOR_URL=${COORDINATOR_URL:-https://git.minddev.nl}
 NODE_KEY=${NODE_KEY:-your-node-key-from-dashboard}
 
 # Optional
@@ -154,7 +154,7 @@ GIT_MAX_RETRIES=2
 # Auto-update staat standaard uit. Zet dit alleen aan als je een eigen,
 # vertrouwde update-bron hebt (de agent voert die code uit).
 UPDATE_ENABLED=false
-UPDATE_REPO=MindOfPersonal/Mindgit-agent
+UPDATE_REPO=MindOfPersonal/agent-mindgit
 UPDATE_BRANCH=master
 UPDATE_INTERVAL=3600000
 UPDATE_VERIFY=true

@@ -54,9 +54,9 @@ if defined COORDINATOR_URL (
 
 if not defined COORDINATOR_URL (
     echo.
-    set /p COORDINATOR_URL="Coordinator URL [default: http://localhost:3000]: "
+    set /p COORDINATOR_URL="Coordinator URL [default: https://git.minddev.nl]: "
 )
-if "%COORDINATOR_URL%"=="" set "COORDINATOR_URL=http://localhost:3000"
+if "%COORDINATOR_URL%"=="" set "COORDINATOR_URL=https://git.minddev.nl"
 if not defined NODE_KEY (
     set /p NODE_KEY="Enter node key - from dashboard - Nodes ^> Add Node: "
 )
@@ -219,7 +219,7 @@ if not exist "%INSTALL_DIR%\.env" (
     if defined COORDINATOR_URL (
         >> "%INSTALL_DIR%\.env" echo COORDINATOR_URL=%COORDINATOR_URL%
     ) else (
-        >> "%INSTALL_DIR%\.env" echo COORDINATOR_URL=http://localhost:3000
+        >> "%INSTALL_DIR%\.env" echo COORDINATOR_URL=https://git.minddev.nl
     )
     if defined NODE_KEY (
         >> "%INSTALL_DIR%\.env" echo NODE_KEY=%NODE_KEY%
@@ -233,7 +233,7 @@ if not exist "%INSTALL_DIR%\.env" (
     >> "%INSTALL_DIR%\.env" echo GIT_MAX_RETRIES=2
     >> "%INSTALL_DIR%\.env" echo.
     >> "%INSTALL_DIR%\.env" echo UPDATE_ENABLED=true
-    >> "%INSTALL_DIR%\.env" echo UPDATE_REPO=MindOfPersonal/Mindgit-agent
+    >> "%INSTALL_DIR%\.env" echo UPDATE_REPO=MindOfPersonal/agent-mindgit
     >> "%INSTALL_DIR%\.env" echo UPDATE_BRANCH=master
     >> "%INSTALL_DIR%\.env" echo UPDATE_INTERVAL=3600000
     >> "%INSTALL_DIR%\.env" echo UPDATE_VERIFY=true

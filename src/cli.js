@@ -8,7 +8,7 @@ const { AGENT_ROOT, loadConfig, safeLoadConfig, envFilePath, envFileExists } = r
 const { createLogger, isPrettyEnabled, colorEnabled } = require('./logger');
 const { Agent, getGitVersion } = require('./agent');
 const { getLocalVersion } = require('./version');
-const { checkForUpdates, remoteRawUrl } = require('./update/updater');
+const { checkForUpdates, remoteRawUrl, isNewer } = require('./update/updater');
 const { redact } = require('./redact');
 const { PROTOCOL_VERSION } = require('../lib/agent-protocol');
 
@@ -118,9 +118,21 @@ async function runDoctor() {
     const wsUrl = config.coordinatorUrl.replace(/^http/, 'ws') + '/agent';
     results.push(line(OK, 'WebSocket-endpoint', wsUrl));
 
-    if (config.updateEnabled) {
+    // Versiecheck tegen de update-repo. Dit gebeurt altijd (ook als
+    // UPDATE_ENABLED=false), zodat je kunt zien of er een nieuwe versie is
+    // zonder dat de agent zichzelf automatisch bijwerkt.
+    const updateLogger = createLogger({ ...config, logLevel: 'silent' });
+    const upd = await checkForUpdates(config, updateLogger, { dryRun: true });
+    const source = `${config.updateRepo}@${config.updateBranch}`;
+    if (upd.checked && upd.remote) {
+      if (isNewer(upd.remote, upd.local)) {
+        results.push(line(WARN, 'Update', `${source} — nieuwe versie ${upd.remote} beschikbaar (lokaal ${upd.local}); auto-update ${config.updateEnabled ? 'aan' : 'uit'}`));
+      } else {
+        results.push(line(OK, 'Update-bron', `${source} — lokaal ${upd.local}, remote ${upd.remote}`));
+      }
+    } else {
       const manifestUrl = remoteRawUrl(config, 'update-manifest.json', config.updateBranch);
-      results.push(line(OK, 'Update-bron', `${config.updateRepo}@${config.updateBranch} (${manifestUrl})`));
+      results.push(line(WARN, 'Update-bron', `${source} — remote niet bereikbaar (${manifestUrl})`));
     }
   }
 
