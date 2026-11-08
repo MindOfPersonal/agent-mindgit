@@ -63,7 +63,29 @@ curl -fsSL https://git.minddev.nl/agent/scripts/install-linux.sh | sudo bash -s 
 Het script installeert in `/opt/mindgit-agent`, zet een systemd-service op en
 start die automatisch. Op macOS wordt een launchd-taak aangemaakt.
 
-**Optie B — deze map kopiëren**
+**Optie B — interactieve installer (`setup.js`, één bestand)**
+
+Zet alleen `setup.js` op de server en start hem:
+
+```bash
+curl -fsSL https://git.minddev.nl/agent/setup.js -o setup.js
+node setup.js
+```
+
+De installer vraagt waar je wilt installeren, waar de agent vandaan komt
+(GitHub of de coordinator), je node-key, of je auto-update wilt, en of hij via
+PM2 of systemd moet starten. Daarna kun je hetzelfde script opnieuw starten voor
+beheer: bijwerken, starten/stoppen, doctor, logs, `.env` aanpassen en verwijderen.
+
+Niet-interactief kan ook:
+
+```bash
+node setup.js --yes --dir /opt/mindgit-agent \
+  --coordinator=https://git.minddev.nl \
+  --node-key=JOUW_NODE_KEY --pm2
+```
+
+**Optie C — deze map kopiëren**
 
 Kopieer de map (zonder `node_modules` en zonder `.env`!) naar de doel-server en
 draai daar:

@@ -1,6 +1,6 @@
 {
   "name": "@mindgit/agent",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "MindGit Distributed Repository Sync Agent (v2) — robust, observable and self-updating",
   "main": "index.js",
   "bin": {
@@ -10,6 +10,7 @@
     "start": "node index.js",
     "test": "node --test",
     "doctor": "node index.js doctor",
+    "setup": "node setup.js",
     "manifest": "node scripts/generate-manifest.js",
     "install:linux": "bash scripts/install-linux.sh",
     "install:macos": "bash scripts/install-macos.sh",
