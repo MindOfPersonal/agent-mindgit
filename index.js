@@ -1,3 +1,4 @@
+# MindDevelopment MindGit agent versie 2.1.0
 #!/usr/bin/env node
 // Mindgit-agent
 'use strict';
