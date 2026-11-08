@@ -10,6 +10,7 @@
     "start": "node index.js",
     "test": "node --test",
     "doctor": "node index.js doctor",
+    "setup": "node setup.js",
     "manifest": "node scripts/generate-manifest.js",
     "install:linux": "bash scripts/install-linux.sh",
     "install:macos": "bash scripts/install-macos.sh",

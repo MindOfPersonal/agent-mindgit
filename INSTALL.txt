@@ -1,12 +1,37 @@
 MindGit Agent — installatie op een andere server
 =================================================
 
-Dit pakket is compleet: de agent-broncode EN alle dependencies (node_modules)
-zitten erbij. Je hebt alleen Node.js 18+ en Git nodig. Er is geen internet of
-`npm install` nodig om te starten.
+Er zijn twee manieren: de interactieve installer (aanbevolen) of handmatig.
+Je hebt Node.js 18+ en Git nodig. De installer regelt de rest.
 
-LET OP: het bestand `.env` zit bewust NIET in dit pakket. Daarin staat de
-node-key, en die is per server verschillend. Je maakt hem hieronder zelf aan.
+LET OP: het bestand `.env` bevat je node-key en is per server verschillend.
+De installer maakt hem voor je aan; commit of deel hem nooit.
+
+
+Snelste manier — alleen setup.js
+--------------------------------
+Zet één bestand op de server en start het:
+
+    curl -fsSL https://git.minddev.nl/agent/setup.js -o setup.js
+    node setup.js
+
+De installer vraagt:
+  1. Waar de agent geïnstalleerd moet worden
+  2. Waar hij vandaan komt (GitHub of de MindGit-coordinator)
+  3. De coordinator-URL en je node-key
+  4. Of auto-update aan moet
+  5. Of hij via PM2 of systemd moet starten
+
+Daarna kun je hetzelfde script opnieuw starten voor beheer:
+bijwerken, starten/stoppen, doctor, logs, .env aanpassen en verwijderen.
+
+Niet-interactief:
+
+    node setup.js --yes --dir /opt/mindgit-agent \
+      --coordinator=https://git.minddev.nl \
+      --node-key=JOUW_NODE_KEY --pm2
+
+Opties: `node setup.js --help`.
 
 
 Stap 1 — Maak een node aan in MindGit
@@ -20,9 +45,9 @@ Of via de CLI (vanaf de machine met toegang tot de coordinator):
 Je krijgt een NODE_KEY van 64 tekens. Bewaar hem goed.
 
 
-Stap 2 — Uitpakken en configureren
-----------------------------------
-    unzip mindgit-agent-2.0.8.zip
+Stap 2 — Installeren (handmatig)
+--------------------------------
+    unzip mindgit-agent-<versie>.zip
     cd mindgit-agent
     cp .env.example .env
     # bewerk .env: zet COORDINATOR_URL en NODE_KEY
@@ -43,7 +68,7 @@ Stap 3 — Controleren en starten
 Blijvend draaien? Kies een supervisor:
 
   PM2:
-    pm2 start ecosystem.config.js
+    pm2 start index.js --name MindGitAgent
     pm2 save
 
   systemd (voorbeeld staat in deploy/mindgit-agent.service):
@@ -63,6 +88,7 @@ toe via Nodes -> jouw node -> Repository toewijzen.
 
 Beheer
 ------
+    node setup.js            # interactief beheer-menu
     node index.js doctor
     node index.js config
     node index.js --version

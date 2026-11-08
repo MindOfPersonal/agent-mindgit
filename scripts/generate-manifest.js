@@ -10,7 +10,7 @@ const path = require('path');
 const crypto = require('crypto');
 
 const ROOT = path.join(__dirname, '..');
-const EXPLICIT = ['index.js', 'package.json', 'package-lock.json', 'lib/agent-protocol.js'];
+const EXPLICIT = ['index.js', 'setup.js', 'package.json', 'package-lock.json', 'lib/agent-protocol.js'];
 const WALK_DIRS = ['src'];
 
 function walk(dir, acc) {
