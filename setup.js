@@ -916,6 +916,20 @@ async function main() {
   const interactive = !opts.yes && Boolean(process.stdin.isTTY);
   banner();
 
+  const nodeMajor = Number.parseInt(process.versions.node.split('.')[0], 10);
+  if (!Number.isFinite(nodeMajor) || nodeMajor < 18) {
+    console.error(red(`Node.js 18 of nieuwer is vereist (gevonden ${process.version}).`));
+    process.exitCode = 1;
+    return;
+  }
+  if (!commandExists('npm')) {
+    console.log(yellow('npm is niet gevonden; dependencies worden niet geïnstalleerd.'));
+    opts.noInstall = true;
+  }
+  if (!commandExists('git')) {
+    console.log(yellow('Git is niet gevonden; de agent heeft Git nodig om repositories te beheren.'));
+  }
+
   const cwd = process.cwd();
   const existing = detectInstall(opts.dir ? path.resolve(opts.dir) : cwd);
   let dir = opts.dir ? path.resolve(opts.dir) : existing ? cwd : DEFAULT_DIR;
