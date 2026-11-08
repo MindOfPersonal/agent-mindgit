@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// MindDevelopment MindGit agent
+// MindDevelopment (Daan)  MindGit agent
 'use strict';
 
 const { main } = require('./src/cli');
