@@ -1,6 +1,5 @@
-# MindDevelopment MindGit agent versie 2.1.0
 #!/usr/bin/env node
-// Mindgit-agent
+// MindDevelopment MindGit agent
 'use strict';
 
 const { main } = require('./src/cli');

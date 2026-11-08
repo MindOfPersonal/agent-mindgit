@@ -1,12 +1,12 @@
 {
   "name": "@mindgit/agent",
-  "version": "2.0.9",
-  "generatedAt": "2026-11-08T00:38:31.086Z",
+  "version": "2.1.1",
+  "generatedAt": "2026-11-08T01:06:27.710Z",
   "files": {
-    "index.js": "0c38fc49a5dd6079461beafb07fae2636ac80c3934a9c9f7f56b8561479ebd29",
+    "index.js": "14e23e3aafda33552eeee4ca6cfa2624609da069b46400afceb0e357de5ff265",
     "lib/agent-protocol.js": "af6f733e6dc5ecaeeb6b1396c9811f3ae4eada6628af7cc7ae26ee226416d4bc",
-    "package-lock.json": "4db3f31e814015e9b884b484f44ba0899127a0cdb275a21b24ba90caf9340fc9",
-    "package.json": "bb7e085c50a7def3fe04244326f6dfe152f0093944582ee9e6bb1980fb15caca",
+    "package-lock.json": "f0475278b03120a6bc34f8ff5ef197a4177e0dee3787ef610ce416b5185d8dd8",
+    "package.json": "19896944282863b5fcdcc36df4de72a2c2dce241231adb296a5213c33236134f",
     "src/agent.js": "1476c1936ea7081a4c5398922a15f7d0c2c33b05ce8d1d6c78916cd66687a568",
     "src/cli.js": "6e280a824722a3ac6d872e514781cff790d1b4e010cef632e86eaa510269c623",
     "src/config.js": "2f1dbbed55e3f54638507c6acc13dbc8ed4da3b8210782a51f614dddeb226e0d",
